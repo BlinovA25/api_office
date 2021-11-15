@@ -1,0 +1,31 @@
+
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<script src = "JS_for_visual.js"></script>
+
+    <h2>DB select</h2>
+
+    <input id="inputField" type="number" placeholder="Введите ID" max="100">
+
+    <ul id="offices"></ul>
+
+    <button id="ShowOff" onclick="makeRequest('offices')">Show offices</button>
+
+    <ul id="departments"></ul>
+
+    <button id="ShowDep" onclick="makeRequest('departments')">Show departments</button>
+
+    <ul id="employees"></ul>
+
+    <button id="ShowEmp" onclick="makeRequest('employees')">Show employees</button>
+
+    <br><br><br>
+    <button id="DelOff" onclick="deleteFromTable('offices')">Delete office</button>
+
+    <br><br>
+    <button id="DelDep" onclick="deleteFromTable('departments')">Delete department</button>
+
+    <br><br>
+    <button id="DelEmpl" onclick="deleteFromTable('employees')">Delete employee</button>
+
+<br><br>
+<a href="HTML_add_update_employee.html"> Add/Update employee </a>
