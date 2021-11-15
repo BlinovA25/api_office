@@ -1,6 +1,6 @@
 
 function makeRequest(table) {
-    var employee_id = document.getElementById('inputField').value;
+    var employee_id = document.getElementById('employee_id').value;
 
     $("#"+table).empty();
 
