@@ -1,48 +1,48 @@
 
 function makeRequest(table) {
-    var el_id = document.getElementById('inputField').value;
+    var employee_id = document.getElementById('inputField').value;
 
     $("#"+table).empty();
 
     $.ajax('http://localhost:3000/'+table, {
         success: function (data){
-            data.forEach(el => {
-                if (el_id == "") {
+            data.forEach(employee => {
+                if (employee_id == "") {
                     if(table == "offices")
                     {
                         const li = document.createElement('li');
-                        li.textContent = "ID - "+el.id+"; Name - "+el.name+"; city - "+el.city+".";
+                        li.textContent = "ID - "+employee.id+"; Name - "+employee.name+"; city - "+employee.city+".";
                         document.querySelector('#'+table).append(li);
                     }
                     else if(table == "departments")
                     {
                         const li = document.createElement('li');
-                        li.textContent = "ID - "+el.id+"; Name - "+el.name+"; office ID - "+el.office_id+".";
+                        li.textContent = "ID - "+employee.id+"; Name - "+employee.name+"; office ID - "+employee.office_id+".";
                         document.querySelector('#'+table).append(li);
                     }
                     else if(table == "employees")
                     {
                         const li = document.createElement('li');
-                        li.textContent = "ID - "+el.id+"; Name - "+el.name+"; office ID - "+el.department_id+".";
+                        li.textContent = "ID - "+employee.id+"; Name - "+employee.name+"; office ID - "+employee.department_id+".";
                         document.querySelector('#'+table).append(li);
                     }
                 } else {
-                    if(table == "offices" && el.id == el_id)
+                    if(table == "offices" && employee.id == employee_id)
                     {
                         const li = document.createElement('li');
-                        li.textContent = "ID - "+el.id+"; Name - "+el.name+"; city - "+el.city+".";
+                        li.textContent = "ID - "+employee.id+"; Name - "+employee.name+"; city - "+employee.city+".";
                         document.querySelector('#'+table).append(li);
                     }
-                    else if(table == "departments" && el.id == el_id)
+                    else if(table == "departments" && employee.id == employee_id)
                     {
                         const li = document.createElement('li');
-                        li.textContent = "ID - "+el.id+"; Name - "+el.name+"; office ID - "+el.office_id+".";
+                        li.textContent = "ID - "+employee.id+"; Name - "+employee.name+"; office ID - "+employee.office_id+".";
                         document.querySelector('#'+table).append(li);
                     }
-                    else if(table == "employees" && el.id == el_id)
+                    else if(table == "employees" && employee.id == employee_id)
                     {
                         const li = document.createElement('li');
-                        li.textContent = "ID - "+el.id+"; Name - "+el.name+"; office ID - "+el.department_id+".";
+                        li.textContent = "ID - "+employee.id+"; Name - "+employee.name+"; office ID - "+employee.department_id+".";
                         document.querySelector('#'+table).append(li);
                     }
                 }
@@ -53,9 +53,9 @@ function makeRequest(table) {
 
 function deleteFromTable(table)
 {
-    var el_id = document.getElementById('inputField').value;
+    let employee_id = document.getElementById('inputField').value;
     $.ajax({
-        url: 'http://localhost:3000/'+table+'/'+el_id,
+        url: 'http://localhost:3000/'+table+'/'+employee_id,
         method: 'delete',
         dataType: 'json' }
     )
@@ -63,33 +63,33 @@ function deleteFromTable(table)
 
 function addEmployee()
 {
-    let emp_name = document.getElementById('empName').value;
-    let emp_dep = document.getElementById('empDep').value;
+    let employee_name = document.getElementById('inputEmployeeName').value;
+    let employee_department = document.getElementById('inputEmployeeDepartment').value;
 
     $.ajax({
         url: 'http://localhost:3000/employees',
         method: 'POST',
         dataType: 'json',
         data: {
-            name: emp_name,
-            department_id: emp_dep
+            name: employee_name,
+            department_id: employee_department
         }})
 }
 
 function updateEmployee()
 {
-    var emp_id = document.getElementById('empID').value;
+    let employee_id = document.getElementById('inputEmployeeID').value;
 
-    var emp_name = document.getElementById('empName').value;
-    var emp_dep = document.getElementById('empDep').value;
+    let employee_name = document.getElementById('inputEmployeeName').value;
+    let employee_department = document.getElementById('inputEmployeeDepartment').value;
 
     $.ajax({
-        url: 'http://localhost:3000/employees/'+emp_id,
+        url: 'http://localhost:3000/employees/'+employee_id,
         method: 'put',
         dataType: 'json',
         data: {
-            "name": emp_name,
-            "department_id": emp_dep
+            "name": employee_name,
+            "department_id": employee_department
         }}
     )
 }
